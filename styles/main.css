@@ -69,7 +69,6 @@ body {
     background: none;
     border: 1px solid #CAD5FF;
     border-radius: 14px;
-    border: none;
     height: 45px;
     width: 45px;
     cursor: pointer;
@@ -131,7 +130,7 @@ color: #000000;
 
 .progress__cover-bar {
     position: absolute;
-    width: 50%;
+    transition: all 0.5s;
     height: 5px;
     border-radius: 4px;
     background: #5051F9;
