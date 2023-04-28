@@ -1,8 +1,8 @@
 [
     {
       "id": 1,
-      "icon": "sport",
-      "name": "Push-ups",
+      "icon": "Sport",
+      "name": "Pushup",
       "target": 10,
       "days": [
         { "comment": "The first approach is always hard" },
@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "icon": "food",
+      "icon": "Food",
       "name": "Good nutrition",
       "target": 10,
       "days": [{ "comment": "Cool!" }]
