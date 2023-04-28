@@ -39,10 +39,10 @@
             <div id="days"></div>
             <div class="habbit">
                 <div class="habbit__day">Day _</div>
-                <form class="habbit__form">
-                    <input class="input_icon" type="text" placeholder="Comments">
+                <form class="habbit__form" onsubmit="addDays(event)">
+                    <input name="comment" class="input_icon" type="text" placeholder="Comments">
                     <img class="input__icon" src="images/Comment.svg" alt="icon comments">
-                    <button class="button">Ready</button>
+                    <button class="button" type="smbmit">Ready</button>
                 </form>
             </div>
            </main> 
