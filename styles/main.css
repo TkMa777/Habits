@@ -248,12 +248,12 @@ input.error {
     justify-content: center;
 }
 
-/* .cover_hidden {
- 
-} */
+.cover_hidden {
+    display: none;
+    
+}
 
 .popup {
-
 background: #FFFFFF;
 box-shadow: 0px 8px 14px 12px rgba(56, 56, 56, 0.05);
 border-radius: 10px;
