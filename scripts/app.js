@@ -3,6 +3,7 @@
 
 let habbits = []
 const HABBIT_KEY = 'HABBIT_KEY'
+let globalActiveHabbit;
 
 // page
 
@@ -86,6 +87,7 @@ function rerenderContent(activeHabbit) {
 }
 
 function rerender (activeHabbitId) {
+    globalActiveHabbit = activeHabbitId
     const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
     if(!activeHabbit) {
         return
@@ -98,11 +100,30 @@ function rerender (activeHabbitId) {
 // work with days
 
 function addDays(event) {
+    const form = event.target
     event.preventDefault()
     // console.log(event)
-    const data = new FormData(event.target)
+    const data = new FormData(form)
     //console.log(data.getAll('comment'))
-    console.log(data.get('comment'))
+    const comment = data.get('comment')
+    //console.log(form)
+    form['comment'].classList.remove('error')
+    if (!comment) {
+       form['comment'].classList.add('error')
+    }
+    //console.log(globalActiveHabbit)
+    habbits = habbits.map(habbit => {
+        if (habbit.id === globalActiveHabbit) {
+            return {
+                ...habbit,
+                days: habbit.days.concat([{comment}])
+            }
+        }
+        return habbit
+    });
+    form['comment'].value = ''
+    rerender(globalActiveHabbit)
+    saveData()
 }
     
 
