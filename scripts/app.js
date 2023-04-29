@@ -3,7 +3,7 @@
 
 let habbits = []
 const HABBIT_KEY = 'HABBIT_KEY'
-let globalActiveHabbit;
+let globalActiveHabbitId;
 
 // page
 
@@ -78,7 +78,7 @@ function rerenderContent(activeHabbit) {
         element.classList.add('habbit')
         element.innerHTML = `<div class="habbit__day">Day ${Number(index) + 1}</div>
              <div class="habbit__comment">${activeHabbit.days[index].comment}</div>
-            <button class="habbit__delete">
+            <button class="habbit__delete" onclick="deleteDay(${index})">
                  <img src="images/Delete.svg" alt="Delete day${index + 1}">
             </button>`
             page.content.daysContainer.appendChild(element)
@@ -87,7 +87,7 @@ function rerenderContent(activeHabbit) {
 }
 
 function rerender (activeHabbitId) {
-    globalActiveHabbit = activeHabbitId
+    globalActiveHabbitId = activeHabbitId
     const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
     if(!activeHabbit) {
         return
@@ -113,7 +113,7 @@ function addDays(event) {
     }
     //console.log(globalActiveHabbit)
     habbits = habbits.map(habbit => {
-        if (habbit.id === globalActiveHabbit) {
+        if (habbit.id === globalActiveHabbitId) {
             return {
                 ...habbit,
                 days: habbit.days.concat([{comment}])
@@ -122,10 +122,25 @@ function addDays(event) {
         return habbit
     });
     form['comment'].value = ''
-    rerender(globalActiveHabbit)
+    rerender(globalActiveHabbitId)
     saveData()
 }
     
+
+function deleteDay (index) {
+    habbits = habbits.map(habbit => {
+        if (habbit.id === globalActiveHabbitId) {
+            habbit.days.splice(index, 1)
+            return {
+                ...habbit,
+                days: habbit.days
+            }
+        }
+        return habbit
+    })
+    rerender(globalActiveHabbitId)
+    saveData()
+}
 
 
 // init
